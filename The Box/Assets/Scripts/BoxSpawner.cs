@@ -7,12 +7,9 @@ public class BoxSpawner : MonoBehaviour
     private float nextSpawnTime;
     GameObject boxInstance;
 
-    [SerializeField]
-    private GameObject box;
-    [SerializeField]
-    private float spawnDelay = 10;
-    [SerializeField]
-    float boxLife = 3.0f;
+    [SerializeField] private GameObject box;
+    [SerializeField] private float spawnDelay = 10;
+    [SerializeField] float boxLife = 3.0f;
 
     private void Update() {
         if (ShouldSpawn()) {
