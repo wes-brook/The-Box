@@ -589,8 +589,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   box: {fileID: 2582290988835412491, guid: 478c815eb7755644f9af9cafbc46f9c0, type: 3}
-  spawnDelay: 1
-  boxLife: 5
+  boxInstance: {fileID: 0}
+  minSpawnTime: 1
+  maxSpawnTime: 2
 --- !u!4 &1793301262
 Transform:
   m_ObjectHideFlags: 0

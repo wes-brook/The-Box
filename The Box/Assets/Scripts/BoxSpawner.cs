@@ -4,32 +4,33 @@ using UnityEngine;
 
 public class BoxSpawner : MonoBehaviour
 {
-    private float nextSpawnTime;
-    GameObject boxInstance;
 
     [SerializeField] private GameObject box;
-    [SerializeField] private float spawnDelay = 10;
-    [SerializeField] float boxLife = 3.0f;
 
-    private void Update() {
-        if (ShouldSpawn()) {
-            Spawn();
+    public GameObject boxInstance;
+    public float minSpawnTime = 1.0f;
+    public float maxSpawnTime = 3.0f;
+ 
+    private float timer = 0.0f;
+    private float nextTime;
+         
+    void Start () {
+        nextTime = Random.Range(minSpawnTime, maxSpawnTime);    
+    }
+     
+    void Update () {
+        timer += Time.deltaTime;
+         
+        if (timer > nextTime) {
+            Vector3 pos = new Vector3(0.0f, 12.84f, Random.value);
+ 
+            Instantiate(box, pos, Quaternion.identity);
+             
+            Debug.Log("Object created");
+             
+            timer = 0.0f;
+            nextTime = Random.Range(minSpawnTime, maxSpawnTime);
         }
-
-        Delete();
-    }
-
-    private void Delete() {
-        Destroy(this.boxInstance, boxLife);
-    }
-
-    private void Spawn() {
-        nextSpawnTime = Time.time + spawnDelay;
-        boxInstance = Instantiate(box, transform.position, transform.rotation);
-    }
-
-    private bool ShouldSpawn() {
-        return Time.time >= nextSpawnTime;
     }
    
 }
